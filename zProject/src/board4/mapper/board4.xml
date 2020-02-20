@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board4">
+	
+	<select id="list" resultType="board4.dto.Board4DTO">
+		select * from (
+			select A.*, rownum as rn from (
+				select num,writer,subject,reg_date,readcount,
+				up,re_level,
+				(select count(*) from board4_comment where board_num=num) comment_count
+				from board4 order by ref desc, re_step
+			) A
+		) where rn between #{start} and #{end}
+	</select>
+	
+	<select id="view" resultType="board4.dto.Board4DTO"> 
+		select * from board4 where num=#{num}
+	</select>
+	
+	<update id="plusReadCount">
+  		update board4 set readcount=readcount+1 where num=#{num}
+  	</update>
+  	
+  	<insert id="insert">
+  		insert into
+		board4
+		(num,writer,subject,ref,re_step,re_level,content,ip)
+		values
+		((select nvl(max(num)+1,1) from board4),
+		#{writer},#{subject},
+		(select nvl(max(num)+1,1) from board4),1,0,
+		#{content},'localhost')
+  	</insert>
+  	
+  	<update id="update">
+  		update board4 set subject=#{subject},content=#{content} where num=#{num}
+  	</update>
+  	
+  	<update id="up">
+  		update board4 set up=up+1 where num=#{num}
+  	</update>
+  	
+  	<delete id="delete">
+  		delete board4 where num=#{num}
+  	</delete>
+  	
+  	<delete id="delete_comment">
+  		delete board4_comment where board_num=#{num}
+  	</delete>
+  	<select id="commentList" resultType="board4.dto.Board4CommentDTO">
+		select * from board4_comment
+		where board_num=#{num}
+	</select>
+	
+	<insert id="comment">
+  		insert into board4_comment (comment_num,board_num,writer,content)
+		values ((select nvl(max(comment_num)+1,1) from board4_comment), #{board_num}, #{writer}, #{content})
+  	</insert>
+  	
+  	<select id="count" resultType="int">
+  		select count(*) from board4
+  	</select>
+	
+	<select id="searchList" resultType="board4.dto.Board4DTO">
+  		select num,writer,subject,reg_date,readcount
+	  	,up,re_level
+		,(select count(*) from board4_comment where board_num=num)
+		 comment_count from board4
+		<choose>
+			<when test="search_option != 'all'">
+				where ${search_option} like #{keyword}
+			</when>
+			<otherwise>
+				where (where writer like #{keyword} or subject like #{keyword} or content like #{keyword})
+			</otherwise>
+		</choose>
+		order by ref desc, re_step
+  </select>
+  
+  <update id="updateStep">
+  	update board4
+  	set re_step=re_step+1
+  	where ref=#{ref} and re_step >= #{re_step}
+  </update>
+  
+  <insert id="reply">
+  	insert into board4
+  	(num,writer,subject,ref,re_step,re_level,content,ip)
+	values ( (select nvl(max(num)+1,1) from board4)
+	,#{writer},#{subject}
+	,#{ref},#{re_step},#{re_level}
+	,#{content},'127.0.0.1')
+  </insert>
+  
+   	<select id="replyCount" resultType="int">
+		select (select count(*) from board4_comment where board_num=#{num}) comment_count from board4 where num=#{num} 
+	</select>
+</mapper>
