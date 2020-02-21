@@ -85,7 +85,7 @@ function list(page) {
 		<div class="col-sm-8 text-left"> 
 			<div class="article-content">
 			<h3>Board1 Content</h3>
-					<h2>게시판</h2>
+					<div style="display: inline; float: right;">
 					<form action="${path}/board1_servlet/search.do" method="post" name="form1">
 						<select name="search_option">
 						<c:choose>
@@ -121,17 +121,17 @@ function list(page) {
 							<input name="keyword" value="${keyword}">
 							<button id="btnSearch">검색</button>
 					</form>
-					
+					</div>
 					<button id="btnWrite">글쓰기</button>
 					
-					<table width="100%">
+					<table class="table">
 						<tr>
-							<th style="width: 5%">번호</th>
-							<th style="width: 60%">제목</th>
-							<th style="width: 20%">작성자</th>
-							<th style="width: 10%">작성일자</th>
-							<th>조회수</th>
-							<th>추천수</th>
+							<th style="width: 10%; text-align: center">번호</th>
+						<th style="width: 50%;">제목</th>
+						<th style="width: 10%; text-align: center">작성자</th>
+						<th style="width: 15%; text-align: center">작성일자</th>
+						<th style="text-align: center">조회수</th>
+						<th style="text-align: center">추천수</th>
 						</tr>
 					 	<c:forEach var="dto" items="${list}">
 					  	<tr>

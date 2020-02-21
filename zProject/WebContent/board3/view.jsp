@@ -143,7 +143,7 @@ function comment_list(){
 
 		<div class="col-sm-8 text-left"> 
 			<div class="article-content">
-			<h3>Board3 Content</h3>
+			<h3>board3 Content</h3>
 					<h2>${dto.subject}</h2>
 					<table border="1" width="100%;">
 						<tr style="border-bottom: 1px solid">
@@ -199,7 +199,7 @@ function comment_list(){
 				    		<td><input type="hidden" id="writer" value="<%=userid %>"></td>
 				  		</tr>
 				  		<tr>
-				    		<td><textarea rows="5" cols="130" placeholder="내용을 입력하세요" id="content"></textarea></td>
+				    		<td><textarea rows="5" cols="60" style="width: 100%" placeholder="내용을 입력하세요" id="content"></textarea></td>
 				    		<td><button id="btnSave" type="button">등록</button></td>
 						</tr>
 					</table>

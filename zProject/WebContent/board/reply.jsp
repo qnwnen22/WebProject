@@ -78,18 +78,19 @@ $(function(){
 					<h3>Board Content</h3>
 					<h2>답변쓰기</h2>
 					<form name="form1" method="post" action="${path}/board_servlet/insertReply.do">
-					<table border="1" width="100%">
+					<table class="table">
 						<tr>
 					    	<td>이름</td>
 					    	<td><input name="writer" id="writer"></td>
 						</tr>
 					  	<tr>
 						    <td>제목</td>
-					    	<td><input name="subject" id="subject" value="Re: ${dto.subject}" size="60"></td>
+					    	<td><input name="subject" id="subject" value="Re: ${dto.subject}"></td>
 					  	</tr>
 					  	<tr>
 						    <td>본문</td>
-					    	<td><textarea rows="5" cols="60" name="content" id="content">${dto.content}</textarea></td>
+					    	<td><textarea rows="20" cols="60" style="width: 100%;" 
+						    name="content" id="content">${dto.content}</textarea></td>
 					  	</tr>
 					  	<tr>
 						    <td>첨부파일</td>

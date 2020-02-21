@@ -86,7 +86,7 @@ $(function(){
 			<h3>Board0 Content</h3>
 					<h2>글쓰기</h2>
 					<form name="form1" method="post" action="${path}/board0_servlet/insert.do">
-						<table border="1" width="100%">
+						<table class="table">
 						  <tr>
 						    <td>작성자</td>
 						    <td><input name="writer" id="writer" value="<%=userid %>" readonly></td>

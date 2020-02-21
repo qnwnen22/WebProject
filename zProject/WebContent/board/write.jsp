@@ -79,18 +79,18 @@ $(function(){
 					<h2>글쓰기</h2>
 					<form name="form1" method="post" enctype="multipart/form-data"
 						action="${path}/board_servlet/insert.do">
-						<table border="1" width="700px">
+						<table class="table">
 						  <tr>
 						    <td>작성자</td>
 						    <td><input name="writer" id="writer" value="<%=userid %>" readonly></td>
 						  </tr>
 						  <tr>
 						    <td>제목</td>
-						    <td><input name="subject" id="subject" size="60"></td>
+						    <td><input name="subject" id="subject"></td>
 						  </tr>
 						  <tr>
 						    <td>본문</td>
-						    <td><textarea rows="5" cols="60" 
+						    <td><textarea rows="20" cols="60" style="width: 100%;" 
 						    name="content" id="content"></textarea></td>
 						  </tr>
 						  <tr>

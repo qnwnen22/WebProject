@@ -89,7 +89,7 @@ $(function(){
 			<h3>Board1 Content</h3>
 					<h2>글쓰기</h2>
 					<form name="form1" method="post" action="${path}/board1_servlet/insertReply.do">
-						<table border="1" width="100%">
+						<table class="table">
 						  <tr>
 						    <td>작성자</td>
 						    <td><input name="writer" id="writer" value="<%=userid %>" readonly></td>
@@ -100,7 +100,7 @@ $(function(){
 						  </tr>
 						  <tr>
 						    <td>본문</td>
-						    <td><textarea style="width: 100%" rows="5" cols="60" name="content" id="content"></textarea></td>
+						    <td><textarea style="width: 100%" rows="20" cols="60" name="content" id="content"></textarea></td>
 						  </tr>
 						  <tr>
 						    <td colspan="2" align="center">

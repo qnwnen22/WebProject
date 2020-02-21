@@ -110,7 +110,7 @@ $(function(){
 			<h3>Board1 Content</h3>
 					<h2>수정 및 삭제</h2>
 					<form name="form1" method="post">
-						<table border="1" width="100%">
+						<table class="table">
 						  <tr>
 						    <td>작성자</td>
 						    <td>
@@ -124,7 +124,7 @@ $(function(){
 						  </tr>
 						  <tr>
 						    <td>본문</td>
-						    <td><textarea style="width: 100%" rows="5" cols="60" name="content" id="content"><%=content %></textarea></td>
+						    <td><textarea style="width: 100%" rows="30" cols="60" name="content" id="content"><%=content %></textarea></td>
 						  </tr>
 						  <tr>
 						    <td colspan="2" align="center">

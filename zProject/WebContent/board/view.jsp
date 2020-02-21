@@ -123,7 +123,7 @@ function comment_list(){
 			<h3>Board Content</h3>
 					<h2>상세화면</h2>
 					<form name="form1" method="post">
-					<table border="1" width="700px">
+					<table class="table">
 				  		<tr>
 						    <td>날짜</td>
 						    <td>${dto.reg_date}</td>
@@ -140,7 +140,7 @@ function comment_list(){
 						</tr>
 				  		<tr>
 				    		<td>본문</td>
-				    		<td colspan="3">${dto.content}</td>
+				    		<td colspan="3"><textarea rows="10" cols="60" style="width: 100%">${dto.content}</textarea></td>
 				  		</tr>
 				  		<tr>
 				    		<td>비밀번호</td>
@@ -171,20 +171,19 @@ function comment_list(){
 						</tr>
 					</table>
 					</form>
+					<h4>댓글</h4>
+					<div id="commentList" style="width: 100%"></div>
 					<!-- 댓글 쓰기 폼 -->
-					<table width="700px">
-				  		<h4>댓글달기</h4>
+					<table class="table">
 				  		<tr>
 				    		<td><input type="hidden" id="writer" value="<%=userid %>"></td>
+				    		<td><textarea style="width: 100%;" rows="5" cols="80" placeholder="내용을 입력하세요" id="content"></textarea></td>
 				    		<td rowspan="2"><button id="btnSave" type="button">확인</button></td>
 				  		</tr>
-				  		<tr>
-				    		<td><textarea rows="5" cols="80" placeholder="내용을 입력하세요" id="content"></textarea></td>
-						</tr>
 					</table>
 					<br>
 					<!-- 댓글 목록을 출력할 영역 -->
-					<div id="commentList"></div>
+					
 			</div>
 		</div>
 		

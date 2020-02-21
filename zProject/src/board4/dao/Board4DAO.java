@@ -15,7 +15,7 @@ import sqlmap.MybatisManager;
 public class Board4DAO {
 
 	public List<Board4DTO> list(int start, int end) {
-		System.out.println("Board3DAO list() 실행");
+		System.out.println("Board4DAO list() 실행");
 		List<Board4DTO> list=null;
 		SqlSession session=null;
 		//혹시 있을지 모를 예외발생을 처리하기 위해 try~catch문처리
@@ -34,7 +34,7 @@ public class Board4DAO {
 	}
 
 	public void plusReadCount(int num, HttpSession count_session) {
-		System.out.println("Board3DAO plusReadCount() 실행");
+		System.out.println("Board4DAO plusReadCount() 실행");
 		SqlSession session=null;
 		
 		try {
@@ -79,7 +79,7 @@ public class Board4DAO {
 	}
 
 	public void insert(Board4DTO dto) {
-		System.out.println("Board3DAO insert() 실행");
+		System.out.println("Board4DAO insert() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -105,7 +105,7 @@ public class Board4DAO {
 	}
 
 	public void delete(int num) {
-		System.out.println("Board3DAO delete() 실행");
+		System.out.println("Board4DAO delete() 실행");
 		delete_comment(num);
 		SqlSession session=null;
 		try {
@@ -123,7 +123,7 @@ public class Board4DAO {
 	}
 	
 	public void delete_comment(int num) {
-		System.out.println("Board3DAO delete_comment() 실행");
+		System.out.println("Board4DAO delete_comment() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -138,7 +138,7 @@ public class Board4DAO {
 		
 	}
 	public void up(int num) {
-		System.out.println("Board3DAO up() 실행");
+		System.out.println("Board4DAO up() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -152,7 +152,7 @@ public class Board4DAO {
 	}
 
 	public List<Board4CommentDTO> commentList(int num) {
-		System.out.println("Board3DAO commentList() 실행");
+		System.out.println("Board4DAO commentList() 실행");
 		List<Board4CommentDTO> list=null;
 		SqlSession session=null;
 		try {
@@ -167,7 +167,7 @@ public class Board4DAO {
 	}
 
 	public void commentAdd(Board4CommentDTO dto) {
-		System.out.println("Board3DAO commentAdd() 실행");
+		System.out.println("Board4DAO commentAdd() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -181,7 +181,7 @@ public class Board4DAO {
 	}
 
 	public int count() {
-		System.out.println("Board3DAO count() 실행");
+		System.out.println("Board4DAO count() 실행");
 		int result=0;
 		try (SqlSession session=MybatisManager.getInstance().openSession()){
 			result=session.selectOne("board4.count");
@@ -192,7 +192,7 @@ public class Board4DAO {
 	}
 
 	public List<Board4DTO> searchList(String search_option, String keyword) {
-		System.out.println("Board3DAO searchList() 실행");
+		System.out.println("Board4DAO searchList() 실행");
 		System.out.println("search_option : "+search_option);
 		System.out.println("keyword : "+keyword);
 		List<Board4DTO> list=null;
@@ -210,7 +210,7 @@ public class Board4DAO {
 	}
 
 	public Board4DTO view(int num) {
-		System.out.println("Board3DAO view() 실행");
+		System.out.println("Board4DAO view() 실행");
 		Board4DTO dto=null;
 		SqlSession session=null;
 		try {
@@ -225,7 +225,7 @@ public class Board4DAO {
 	}
 
 	public void updateStep(int ref, int re_step) {
-		System.out.println("Board3DAO updateStep() 실행");
+		System.out.println("Board4DAO updateStep() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -243,7 +243,7 @@ public class Board4DAO {
 	}
 
 	public void reply(Board4DTO dto) {
-		System.out.println("Board3DAO reply() 실행");
+		System.out.println("Board4DAO reply() 실행");
 		SqlSession session=null;
 		try {
 			session=MybatisManager.getInstance().openSession();
@@ -258,7 +258,7 @@ public class Board4DAO {
 		
 	}
 	public int replyCount(int num) {
-		System.out.println("Board3DAO replyCount() 실행");
+		System.out.println("Board4DAO replyCount() 실행");
 		int count=0;
 		SqlSession session=null;
 		try {

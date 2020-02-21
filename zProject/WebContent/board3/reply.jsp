@@ -15,12 +15,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <%
-int num=(int)request.getAttribute("num");
 String subject=(String)request.getAttribute("subject");
-String content=(String)request.getAttribute("content");
 %>
 <script type="text/javascript">
-
 $(function(){
 	$("#btnSave").click(function(){
 		
@@ -35,24 +32,7 @@ $(function(){
 		}
 		document.form1.submit();
 	});
-	
-	$("#btnEdit").click(function() {
-		document.form1.action="${path}/board3_servlet/update.do";
-		document.form1.submit();
-	});
-	
-	$("#btnDelete").click(function() {
-		var result=confirm("정말로 게시물을 삭제하시겠습니까?\n삭제된 게시물은 복구할 수 없습니다.");
-		if(result){
-			document.form1.action="${path}/board3_servlet/delete.do";
-			document.form1.submit();
-			alert("게시물이 정상적으로 삭제되었습니다.");
-		}else {
-			exit;
-		}
-	});
 });
-
 </script>
 </head>
 <body>
@@ -106,30 +86,27 @@ $(function(){
 
 		<div class="col-sm-8 text-left"> 
 			<div class="article-content">
-			<h3>Board3 Content</h3>
-					<h2>수정 및 삭제</h2>
-					<form name="form1" method="post">
-						<table border="1" width="100%">
+			<h3>board3 Content</h3>
+					<h2>글쓰기</h2>
+					<form name="form1" method="post" action="${path}/board3_servlet/insertReply.do">
+						<table class="table">
 						  <tr>
 						    <td>작성자</td>
-						    <td>
-						    	<input type="hidden" id="num" name="num" value="<%=num %>">
-						    	<input name="writer" id="writer" value="<%=userid %>" readonly>
-						    </td>
+						    <td><input name="writer" id="writer" value="<%=userid %>" readonly></td>
 						  </tr>
 						  <tr>
 						    <td>제목</td>
-						    <td><input name="subject" id="subject" size="60" placeholder="" value="<%=subject %>"></td>
+						    <td><input name="subject" id="subject" size="60" value="&nbsp;&nbsp;Re:<%=subject %>" readonly></td>
 						  </tr>
 						  <tr>
 						    <td>본문</td>
-						    <td><textarea style="width: 100%" rows="5" cols="60" name="content" id="content"><%=content %></textarea></td>
+						    <td><textarea style="width: 100%" rows="20" cols="60" name="content" id="content"></textarea></td>
 						  </tr>
 						  <tr>
 						    <td colspan="2" align="center">
-						    	<input type="button" value="수정" id="btnEdit">
-						    	<input type="button" value="삭제" id="btnDelete">
-					    	</td>
+						      <input type="hidden" name="num" value="${dto.num}">
+						      <input type="button" value="확인" id="btnSave">
+						    </td>
 						  </tr>
 						</table>
 					</form>

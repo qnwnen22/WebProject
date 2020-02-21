@@ -199,7 +199,7 @@ function comment_list(){
 				    		<td><input type="hidden" id="writer" value="<%=userid %>"></td>
 				  		</tr>
 				  		<tr>
-				    		<td><textarea rows="5" cols="130" placeholder="내용을 입력하세요" id="content"></textarea></td>
+				    		<td><textarea rows="5" cols="60" style="width: 100%" placeholder="내용을 입력하세요" id="content"></textarea></td>
 				    		<td><button id="btnSave" type="button">등록</button></td>
 						</tr>
 					</table>

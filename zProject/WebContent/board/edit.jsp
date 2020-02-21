@@ -85,10 +85,10 @@ $(function(){
 			<h3>Board Content</h3>
 					<h2>수정/삭제</h2>
 					<form name="form1" method="post" enctype="multipart/form-data">
-					<table border="1" width="700px">
+					<table class="table">
   						<tr>
     						<td>이름</td>
-    						<td><input name="writer" id="writer" value="${dto.writer}"></td>
+    						<td><input name="writer" id="writer" value="${dto.writer}" readonly></td>
   						</tr>
   						<tr>
     						<td>제목</td>
@@ -97,7 +97,8 @@ $(function(){
   						</tr>
 						<tr>
 							<td>본문</td>
-						    <td><textarea rows="5" cols="60" name="content" id="content">${dto.content}</textarea></td>
+						    <td><textarea rows="20" cols="60" style="width: 100%;" 
+						    name="content" id="content">${dto.content}</textarea></td>
 						</tr>
 						<tr>
 							<td>첨부파일</td>
