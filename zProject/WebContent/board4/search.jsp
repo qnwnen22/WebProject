@@ -29,7 +29,7 @@ $(function() {
 	});
 });
 function list(page) {
-	location.href="${path}/board4_servlet/list.do?curPage="+page;
+	location.href="${path}/board4_servlet/search.do?curPage="+page;
 }
 </script>
 </head>

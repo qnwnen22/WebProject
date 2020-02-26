@@ -191,15 +191,18 @@ public class Board4DAO {
 		return result;
 	}
 
-	public List<Board4DTO> searchList(String search_option, String keyword) {
+	public List<Board4DTO> searchList(int start, int end, String search_option, String keyword) {
 		System.out.println("Board4DAO searchList() 실행");
 		System.out.println("search_option : "+search_option);
 		System.out.println("keyword : "+keyword);
+		
 		List<Board4DTO> list=null;
 //		try ~ with문 : java1.7부터 사용 가능
 //		try(){}문장에서 finally절을 안써도 자동으로 리소스가 정리된다.
 		try(SqlSession session=MybatisManager.getInstance().openSession()) {
-			Map<String,String> map=new HashMap<String, String>();
+			Map<String,Object> map=new HashMap<String,Object>();
+			map.put("start",start);
+			map.put("end",end);
 			map.put("search_option", search_option);
 			map.put("keyword", "%"+keyword+"%");
 			list=session.selectList("board4.searchList",map);

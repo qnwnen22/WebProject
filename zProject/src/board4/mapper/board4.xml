@@ -64,7 +64,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</select>
 	
 	<select id="searchList" resultType="board4.dto.Board4DTO">
-  		select num,writer,subject,reg_date,readcount
+  		select * from (
+			select A.*, rownum as rn from (
+				select num,writer,subject,reg_date,readcount
+				,up,re_level
+				,(select count(*) from board4_comment where board_num=num)
+			 	comment_count from board4
+				<choose>
+					<when test="search_option != 'all'">
+						where ${search_option} like #{keyword}
+					</when>
+					<otherwise>
+						where (where writer like #{keyword} or subject like #{keyword} or content like #{keyword})
+					</otherwise>
+				</choose>
+				order by ref desc, re_step
+			) A
+		) where rn between #{start} and #{end}
+
+  		<!-- select num,writer,subject,reg_date,readcount
 	  	,up,re_level
 		,(select count(*) from board4_comment where board_num=num)
 		 comment_count from board4
@@ -76,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				where (where writer like #{keyword} or subject like #{keyword} or content like #{keyword})
 			</otherwise>
 		</choose>
-		order by ref desc, re_step
+		order by ref desc, re_step -->
   </select>
   
   <update id="updateStep">

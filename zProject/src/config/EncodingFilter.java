@@ -27,7 +27,7 @@ public class EncodingFilter implements Filter {
 
 //	요청이 들어올 때 거쳐가는 코드
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.println("필터가 실행되었습니다.");
+//		System.out.println("필터가 실행되었습니다.");
 		request.setCharacterEncoding(charset);
 		chain.doFilter(request, response);
 	}

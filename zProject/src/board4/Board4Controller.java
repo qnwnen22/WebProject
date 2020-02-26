@@ -153,15 +153,29 @@ public class Board4Controller extends HttpServlet {
 			dto.setContent(content);
 			dao.commentAdd(dto);
 		}else if(url.indexOf("search.do")!=-1) {
+			System.out.println("search.do 실행");
 			String search_option=request.getParameter("search_option");
 			String keyword=request.getParameter("keyword");
 			System.out.println("search_option:"+search_option);
 			System.out.println("keyword:"+keyword);
 			
-			List<Board4DTO> list=dao.searchList(search_option, keyword);
+			//레코드 갯수 계산
+			int count=dao.count();
+			//페이지 나누기를 위한 처리
+			int curPage=1;
+			if(request.getParameter("curPage") != null) {
+				curPage=Integer.parseInt(request.getParameter("curPage"));
+			}
+			Pager pager=new Pager(count, curPage);
+			int start=pager.getPageBegin();
+			int end=pager.getPageEnd();
+			List<Board4DTO> list=dao.searchList(start, end, search_option, keyword);
 			request.setAttribute("list", list);
 			request.setAttribute("search_option", search_option);
 			request.setAttribute("keyword", keyword);
+			
+			request.setAttribute("page", pager);
+			
 			String page="/board4/search.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(page);
 			rd.forward(request, response);
