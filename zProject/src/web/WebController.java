@@ -36,6 +36,7 @@ public class WebController extends HttpServlet {
 		WebDAO dao=new WebDAO();
 		
 		if(url.indexOf("login.do") != -1) {
+			System.out.println("login.do 실행");
 			String userid = request.getParameter("userid");
 			String userpw = request.getParameter("userpw");
 			String page="";
@@ -60,11 +61,13 @@ public class WebController extends HttpServlet {
 			}
 			
 		}else if(url.indexOf("logOut.do") != -1) {
+			System.out.println("logOut.do 실행");
 			HttpSession session = request.getSession();
 			session.invalidate();
 			response.sendRedirect(context+"/main/index.jsp");
 		}
 		else if(url.indexOf("signUp.do") != -1){
+			System.out.println("signUp.do 실행");
 			System.out.println("signUp start");
 			
 			String userid = request.getParameter("userid");
@@ -106,7 +109,7 @@ public class WebController extends HttpServlet {
 			
 			
 		}else if(url.indexOf("list.do")!=-1) {
-			System.out.println("list.do start");
+			System.out.println("list.do 실행");
 			String path="/webProject/boardList.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(context+path);
 			rd.forward(request, response);
@@ -224,12 +227,15 @@ public class WebController extends HttpServlet {
 			rd.forward(request, response);
 			
 		}else if(url.indexOf("login_page.do")!=-1) {
+			System.out.println("login_page.do 실행");
 			String path="/login/login.jsp";
 			response.sendRedirect(context+path);
 		}else if(url.indexOf("signUp_page.do")!=-1) {
+			System.out.println("signUp_page.do 실행");
 			String path="/login/signUp.jsp";
 			response.sendRedirect(context+path);
 		}else if(url.indexOf("edit.do")!=-1) {
+			System.out.println("edit.do 실행");
 			HttpSession session = request.getSession();
 			String userid=(String)session.getAttribute("userid");
 			
@@ -270,38 +276,44 @@ public class WebController extends HttpServlet {
 			out.println("<script>alert('수정되었습니다.재로그인 해주세요.'); location.href='"+context+"/login/login.jsp';</script>");
 			out.flush();
 		}else if(url.indexOf("menu1.do")!=-1) {
-			
+			System.out.println("menu1.do 실행");
 			String path="/main/menu1.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		}else if(url.indexOf("menu2.do")!=-1) {
-			
+			System.out.println("menu2.do 실행");
 			String path="/board0_sevlet/list.do";
 			RequestDispatcher rd=request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		}
 		else if(url.indexOf("main.do")!=-1) {
+			System.out.println("main.do 실행");
 			String path="/main/main.jsp";
 			RequestDispatcher rd=request.getRequestDispatcher(path);
 			rd.forward(request, response);
 		}
 		else if(url.indexOf("index.do")!=-1) {
+			System.out.println("index.do 실행");
 			String path="/main/index.jsp";
 			response.sendRedirect(context+path);
 		}
 		else if(url.indexOf("signIn.do")!=-1) {
+			System.out.println("signIn.do 실행");
 			String path="/login/login.jsp";
 			response.sendRedirect(context+path);
 		}
 		else if(url.indexOf("signUp0.do")!=-1) {
+			System.out.println("signUp0.do 실행");
 			String path="/login/signUp.jsp";
 			response.sendRedirect(context+path);
 		}
 		else if(url.indexOf("findId.do")!=-1) {
+			System.out.println("findId.do 실행");
 			String path="/login/find_id.jsp";
 			response.sendRedirect(context+path);
 		}
 		else if(url.indexOf("findPw.do")!=-1) {
+			System.out.println("findPw.do 실행");
 			String path="/login/find_pw.jsp";
 			response.sendRedirect(context+path);
 		}
